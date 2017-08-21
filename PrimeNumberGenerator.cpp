@@ -2,7 +2,7 @@
 
 using namespace std;
 
-bool sieve(int n)
+void sieve(int n)
 {
 	int prime[n+1]={0};
 	for(int i=2;i*i<=n;i++)
@@ -19,8 +19,8 @@ bool sieve(int n)
 		}
 	}
 	for (int p=2; p<=n; p++)
-       	if (prime[p]==false)
-       		printf("%d ",p);
+       		if (prime[p]==false)
+       			printf("%d ",p);
 }
 
 int main() {
