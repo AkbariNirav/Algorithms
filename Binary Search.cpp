@@ -2,6 +2,29 @@
 #include <algorithm>
 using namespace std;
 
+int binarySearch(int arr[],int n,int high,int low)
+{
+	int mid = (low+high)/2;
+	while(low<=high)
+	{
+		if(n==arr[mid])
+		{
+			return mid;
+		}
+		else if(n>arr[mid])
+		{
+			low=mid+1;
+			mid=(low+high)/2;
+		}
+		else if(n<arr[mid])
+		{
+			high=mid-1;
+			mid=(low+high)/2;
+		}
+	}
+	return -1;
+}
+
 int main() {
 	int size = 10000;
 	int arr[size];
@@ -15,27 +38,7 @@ int main() {
 		cin>>n;
 		int low=0;
 		int high=size-1;
-		int mid = (low+high)/2;
-		while(low<=high)
-		{
-			if(n==arr[mid])
-			{
-				cout<<"True"<<endl;
-				break;
-			}
-			else if(n>arr[mid])
-			{
-				low=mid+1;
-				mid=(low+high)/2;
-			}
-			else if(n<arr[mid])
-			{
-				high=mid-1;
-				mid=(low+high)/2;
-			}
-		}
-		if(n!=arr[mid])
-			cout<<"False"<<endl;
+		cout << binarySearch(arr,n,high,low)<<endl;
 	}
 	return 0;
 }
